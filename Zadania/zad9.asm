@@ -4,6 +4,7 @@
  *  Created: 25.01.2022 18:33:09
  *   Author: sebo2
  */ 
+ /*
  .equ negowana_bitowa_jedynka = 0xfe ;A-10 B-11 C-12 D-13 E-14 F-15
  .equ negowana_bitowa_dwojka = 0xfd
  .equ negowana_bitowa_trojka = 0xfc
@@ -54,6 +55,9 @@ petla:
 
 	cpi r22, 0b10000000
 	breq osiem
+	
+	cpi r22, 0x00
+	breq gas
 
 blad:
 	ldi r22, bledna_wartosc
@@ -61,12 +65,12 @@ blad:
 	jmp petla
 
 jeden:
-	ldi r22, negowana_bitowa_jedynka
+	com r22
 	out PORTC, r22
 	jmp petla
 
 dwa:
-	ldi r22, negowana_bitowa_dwojka
+	com r22
 	out PORTC, r22
 	jmp petla
 trzy:
@@ -93,4 +97,36 @@ osiem:
 	ldi r22, negowana_bitowa_osemka
 	out PORTC, r22
 	jmp petla
+gas:
+	ldi r22, 0xff
+	out PORTC, r22
+	jmp petla
+ /*
+ */
+ //counter petli- wynik binarny
+  /*
+.cseg
+.org 0
+	rjmp start
+.org 0x100
 
+start:
+	ldi r19, 0xff
+	ldi r20, 0x00
+	ldi r16, 0x01
+	ldi r17, 0x01
+	out DDRC, r19 ;PORTC na wyjœcie 1 - LED, wyj=1, gdyby portC = 0x0 to wyj= 0
+	out PORTC, r19
+	out DDRB, r20 ;PORTB na wejœcie 0 - klawisze
+	out PORTB, r19 ;rezystory podci¹gaj¹ce, a u nas trzeba wl¹czaæ on zbiera szumy i jak nie jest w³aczony to wtedy moze nie wczytywac dobrze pinow B
+
+petla:
+	in r21, PINB
+	mov r22, r21
+	com r22
+	lsl r16
+	sub r19, r17
+	out PORTC, r19
+	jmp petla
+
+	*/

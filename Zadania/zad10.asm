@@ -21,7 +21,7 @@
 .org 0
 	jmp start
 .org ADR_C
-	TAB: .dw 0x0059, 0x616b
+	TAB: .dw 0x6000, 0x746a, 0x887e, 0xA692
 
 start:
 	ldi zl, low(TAB<<1)
@@ -166,38 +166,38 @@ sprawdzenie:
 jeden:
 	ldi r22, komunikat1
 	out PORTC, r22
-	jmp petla
+	jmp start
 dwa:
 	ldi r22, komunikat2
 	out PORTC, r22
-	jmp petla
+	jmp start
 trzy:
 	ldi r22, komunikat3
 	out PORTC, r22
-	jmp petla
+	jmp start
 cztery:
 	ldi r22, komunikat4
 	out PORTC, r22
-	jmp petla
+	jmp start
 piec:
 	ldi r22, komunikat5
 	out PORTC, r22
-	jmp petla
+	jmp start
 szesc:
 	ldi r22, komunikat6
 	out PORTC, r22
-	jmp petla
+	jmp start
 siedem:
 	ldi r22, komunikat7
 	out PORTC, r22
-	jmp petla
+	jmp start
 osiem:
 	ldi r22, komunikat8
 	out PORTC, r22
-	jmp petla
+	jmp start
 dziewiec:
 	ldi r22, komunikat9
 	out PORTC, r22
-	jmp petla
+	jmp start
 
 
