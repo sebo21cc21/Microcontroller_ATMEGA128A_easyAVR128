@@ -4,7 +4,7 @@
  *  Created: 25.01.2022 18:33:09
  *   Author: sebo2
  */ 
- /*
+
  .equ negowana_bitowa_jedynka = 0xfe ;A-10 B-11 C-12 D-13 E-14 F-15
  .equ negowana_bitowa_dwojka = 0xfd
  .equ negowana_bitowa_trojka = 0xfc
@@ -101,8 +101,8 @@ gas:
 	ldi r22, 0xff
 	out PORTC, r22
 	jmp petla
- /*
- */
+
+
  //counter petli- wynik binarny
   /*
 .cseg
